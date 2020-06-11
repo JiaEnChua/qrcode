@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Qrcode</title>
+        <script src="qrcode.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head> 
+
+    <body>
+        <h1>Please input Name and Contact</h1>
+        <div onchange="generateQR()" class="col-lg-4">
+            <input type="text" id='inputName' placeholder="Name" class="form-control">
+            <input type="text" id='contact' placeholder="Contact" class="form-control">
+            <div id='qrcode'></div>
+        </div>
+    </body>
+
+    <script>
+        var nameData = document.getElementById('inputName');
+        var contactData = document.getElementById('contact');
+        var qrcode = new QRCode(document.getElementById('qrcode'));
+
+        function generateQR() {
+            var person_name = nameData.value;
+            var contact = contactData.value;
+            qrcode.makeCode(person_name+'\n'+'\n'+contact);
+        }
+    </script>
+</html>
